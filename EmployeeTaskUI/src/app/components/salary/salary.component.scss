@@ -1,0 +1,50 @@
+.salary-list {
+  margin: 20px;
+}
+
+.salary-list h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.salary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.salary-table th,
+.salary-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.salary-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.salary-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.salary-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.salary-table td button {
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.salary-table td button:hover {
+  background-color: #c0392b;
+}

@@ -1,0 +1,68 @@
+<div class="employee-list">
+  <div class="employee-container">
+    <div class="d-flex justify-content-between">
+      <h2>Employee List</h2>
+      <button class="btn btn-primary" (click)="toggleAddEmployeeForm()">Add Employee</button>
+    </div>
+
+    <div *ngIf="showAddEmployeeForm" class="form-container">
+      <h3>Add Employee</h3>
+      <div class="form-container">
+        <form [formGroup]="employeeForm" (ngSubmit)="addOrUpdateEmployee()">
+          <h2>Employee Form</h2>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input id="firstName" formControlName="firstName" type="text" placeholder="Enter First Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" formControlName="lastName" type="text" placeholder="Enter Last Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="emailId">Email:</label>
+            <input id="emailId" formControlName="emailId" type="email" placeholder="Enter Email" />
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location:</label>
+            <input id="location" formControlName="location" type="text" placeholder="Enter Location" />
+          </div>
+
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input id="dateOfBirth" formControlName="dateOfBirth" type="date" />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" [disabled]="!employeeForm.valid" class="btn-submit">Submit</button>
+            <button type="button" (click)="closeForm()" class="btn-reset">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td (click)="navigateToSalary(employee.employeeId)">{{ employee.firstName }}</td>
+        <td (click)="navigateToSalary(employee.employeeId)">{{ employee.lastName }}</td>
+        <td (click)="navigateToSalary(employee.employeeId)">{{ employee.emailId }}</td>
+        <td (click)="navigateToSalary(employee.employeeId)">{{ employee.location }}</td>
+        <td class="d-flex gap-3">
+          <button class="btn btn-warning" (click)="populateForm(employee)">Edit</button>
+          <button (click)="deleteEmployee(employee.employeeId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

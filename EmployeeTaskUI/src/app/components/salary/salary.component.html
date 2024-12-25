@@ -1,0 +1,55 @@
+<div class="salary-list">
+  <div>
+    <h2>Salary List</h2>
+
+    <button class="btn btn-primary" (click)="toggleAddSalaryForm()">
+      Add Salary
+    </button>
+  </div>
+
+  <div *ngIf="showAddSalaryForm" class="form-container">
+    <h3>Add Salary</h3>
+    <form [formGroup]="salaryForm" (ngSubmit)="addOrUpdateSalary()">
+      <div>
+        <label for="amount">Amount</label>
+        <input id="amount" formControlName="amount" type="number" />
+      </div>
+      <div>
+        <label for="payDate">Pay Date</label>
+        <input id="payDate" formControlName="payDate" type="date" />
+      </div>
+      <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+  </div>
+  <h2>Salary Details for Employee ID: {{ employeeId }}</h2>
+
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Salary ID</th>
+        <th>Item Type</th>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salary of salaries">
+        <td>{{ salary.salaryId }}</td>
+        <td>{{ salary.itemType }}</td>
+        <td>{{ salary.name }}</td>
+        <td>{{ salary.value | currency }}</td>
+        <td class="d-flex gap-3">
+          <button class="btn btn-warning" (click)="populateForm(salary)">Edit</button>
+
+          <button
+            (click)="deleteSalary(salary.salaryId)"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
